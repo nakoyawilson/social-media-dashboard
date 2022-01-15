@@ -13,25 +13,35 @@
   --lime-green: hsl(163, 72%, 41%);
   --bright-red: hsl(356, 69%, 56%);
   --body-bg-dark: hsl(230, 17%, 14%);
+  --body-bg-dark-hover: hsl(228, 26%, 27%);
   --dark-blue-1: hsl(232, 19%, 15%);
   --card-bg-dark: hsl(228, 28%, 20%);
   --desaturated-blue: hsl(228, 34%, 66%);
   --white: hsl(0, 0%, 100%);
+  --body-bg-light-hover: hsl(232, 33%, 91%);
   --pale-blue: hsl(225, 100%, 98%);
   --card-bg-light: hsl(227, 47%, 96%);
   --grayish-blue: hsl(228, 12%, 44%);
   --dark-blue-2: hsl(230, 17%, 14%);
-}
-
-/* Dark Theme */
-.dark-theme {
-  --toggle: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
-  --toggle-hover: linear-gradient(
+  --gray: hsl(230, 22%, 74%);
+  --hover-gradient: linear-gradient(
     to right,
     hsl(210, 78%, 56%),
     hsl(146, 68%, 55%)
   );
+  --toggle-gradient: linear-gradient(
+    to right,
+    hsl(210, 78%, 56%),
+    hsl(146, 68%, 55%)
+  );
+}
+
+/* Dark Theme */
+.dark-theme {
+  --toggle: var(--toggle-gradient);
+  --toggle-hover: var(--hover-gradient);
   --background: var(--body-bg-dark);
+  --bg-hover: var(--body-bg-dark-hover);
   --top-bg-pattern: var(--dark-blue-1);
   --card-bg: var(--card-bg-dark);
   --text-primary: var(--desaturated-blue);
@@ -40,13 +50,10 @@
 
 /* Light Theme */
 .light-theme {
-  --toggle: hsl(230, 22%, 74%);
-  --toggle-hover: linear-gradient(
-    to right,
-    hsl(210, 78%, 56%),
-    hsl(146, 68%, 55%)
-  );
+  --toggle: var(--gray);
+  --toggle-hover: var(--hover-gradient);
   --background: var(--white);
+  --bg-hover: var(--body-bg-light-hover);
   --top-bg-pattern: var(--pale-blue);
   --card-bg: var(--card-bg-light);
   --text-primary: var(--grayish-blue);
@@ -90,6 +97,12 @@ img {
 
 .downward-trend {
   color: var(--bright-red);
+}
+
+.account:hover,
+.stats-container:hover {
+  background-color: var(--bg-hover);
+  cursor: pointer;
 }
 
 /* Header Section */
@@ -164,13 +177,13 @@ body::after {
   right: 0;
   bottom: 0;
   background: var(--toggle);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: transform 0.4s;
+  transition: transform 0.4s;
   border-radius: 34px;
 }
 
-.switch:hover .slider {
-  background: var(--toggle);
+.toggle-switch:hover .switch .slider {
+  background: var(--toggle-hover);
 }
 
 .slider:before {
@@ -181,13 +194,13 @@ body::after {
   left: 2.5px;
   bottom: 2.5px;
   background-color: var(--top-bg-pattern);
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition: transform 0.4s;
+  transition: transform 0.4s;
   border-radius: 50%;
 }
 
 input:checked + .slider {
-  background-color: var(--top-bg-pattern);
+  background-color: var(--toggle);
 }
 input:checked + .slider:before {
   -webkit-transform: translateX(24px);
