@@ -389,9 +389,3 @@ input:checked + .slider:before {
     font-size: 1.25rem;
   }
 }
-
-/* @media screen and (max-width: 280px) {
-  .title {
-    font-size: 1.25rem;
-  }
-} */
