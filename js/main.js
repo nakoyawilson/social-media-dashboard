@@ -1,8 +1,11 @@
 const themeToggler = document.querySelector("input");
 const toggleSwitch = document.querySelector("#toggleSwitch");
+const labelSwitch = document.querySelector("#labelSwtich");
 const body = document.querySelector("body");
 
 const toggleTheme = () => {
+  localStorage.setItem(themeToggler.id, themeToggler.checked);
+  themeToggler.checked = !themeToggler.checked;
   if (themeToggler.checked) {
     body.classList.remove("dark-theme");
     body.classList.add("light-theme");
@@ -25,12 +28,6 @@ if (localStorage.getItem(themeToggler.id) === null) {
   toggleTheme();
 }
 
-toggleSwitch.addEventListener("click", () => {
-  if (themeToggler.checked) {
-    themeToggler.checked = false;
-  } else {
-    themeToggler.checked = true;
-  }
-  toggleTheme();
-  localStorage.setItem(themeToggler.id, themeToggler.checked);
-});
+toggleSwitch.addEventListener("click", toggleTheme);
+
+labelSwitch.addEventListener("click", toggleTheme);

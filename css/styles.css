@@ -152,6 +152,10 @@ body::after {
   align-items: center;
 }
 
+.theme-toggler:hover {
+  cursor: pointer;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
