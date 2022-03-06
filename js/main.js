@@ -1,4 +1,5 @@
 const themeToggler = document.querySelector("input");
+const toggleSwitch = document.querySelector("#toggleSwitch");
 const body = document.querySelector("body");
 
 const toggleTheme = () => {
@@ -24,8 +25,12 @@ if (localStorage.getItem(themeToggler.id) === null) {
   toggleTheme();
 }
 
-themeToggler.addEventListener("change", () => {
+toggleSwitch.addEventListener("click", () => {
+  if (themeToggler.checked) {
+    themeToggler.checked = false;
+  } else {
+    themeToggler.checked = true;
+  }
+  toggleTheme();
   localStorage.setItem(themeToggler.id, themeToggler.checked);
 });
-
-themeToggler.addEventListener("click", toggleTheme);
